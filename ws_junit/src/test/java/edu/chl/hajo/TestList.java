@@ -23,12 +23,19 @@ public class TestList {
         assertTrue(l.getLength()==1);
     }
 
-    @Test
-    public void testRemove(){
+    @Test(expected=IllegalStateException.class)
+    public void testRemoveOnEmpty() {
         List l = new List();
+        l.remove();
+    }
+
+    @Test
+    public void testRemoveOnNotEmpty(){
+        List l = new List();
+        //List is not empty
         l.add(1);
         l.remove();
-        assertTrue(l.getLength() == 0);
+        assertTrue(l.getLength() == 1);
     }
 
 
