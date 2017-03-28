@@ -62,8 +62,52 @@ public class TestList {
         int value = l.get(4);
         System.out.println(value);
         assertTrue(value == 33);
-
     }
 
+
+    @Test
+    public void testDeepCopyPointer(){
+        List l1 = new List();
+        List l2 = l1.copy();
+
+        assertFalse(l1.equals(l2));
+    }
+
+    @Test
+    public void testDeepCopyChangedList(){
+        List l1 = new List();
+        List l2 = l1.copy();
+
+        //Add some random elements to one of the lists
+        l1.add(2);
+        l1.add(3);
+
+        assertFalse(l1.getLength() == l2.getLength() );
+    }
+
+    /*
+
+    @BeforeClass
+    public static void beforeClass(){  //First of all
+        //init env
+    }
+    //Runs at the end of tests
+    @AfterClass
+    public static void afterClass(){
+        //cleanup
+    }
+
+    @Before
+    public static void beforeClass(){
+        //code
+    }
+
+    //Runs after each function
+    @After
+    public void printAfterOneTest(){
+        //code
+    }
+
+    */
 
 }
