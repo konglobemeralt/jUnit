@@ -35,6 +35,7 @@ public class List {
         }
         int i = head.getNext().getValue();
         head.setNext(head.getNext().getNext());
+        length--;
         return i;
     }
 
@@ -44,9 +45,8 @@ public class List {
             throw new IllegalArgumentException("Index out of bound");
         }
         Node<Integer> pos = head;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i <= length - index; i++) {
             pos = pos.getNext();
-
         }
         return pos.getValue();
     }

@@ -32,10 +32,37 @@ public class TestList {
     @Test
     public void testRemoveOnNotEmpty(){
         List l = new List();
-        //List is not empty
         l.add(1);
         l.remove();
-        assertTrue(l.getLength() == 1);
+        assertTrue(l.getLength() == 0);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testGetValOutOfBounds() {
+        List l = new List();
+        l.add(1);
+        l.get(Integer.MAX_VALUE);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testGetBadIndex() {
+        List l = new List();
+        l.get(-1);
+    }
+
+    @Test
+    public void testGetVal(){
+        List l = new List();
+        l.add(00);
+        l.add(11);
+        l.add(22);
+        l.add(33);
+        l.add(44);
+
+        int value = l.get(4);
+        System.out.println(value);
+        assertTrue(value == 33);
+
     }
 
 
